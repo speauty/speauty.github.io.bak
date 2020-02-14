@@ -1,7 +1,7 @@
 * [README](/README.md)
-* [Linux]()
-* [MySQL]()
-* [PHP]()
-* [Redis]()
-* [PHP]()
-* [Others]()
+* Linux
+* MySQL
+* PHP
+  * [环境搭建](/php/环境搭建.md)
+* Redis
+* Others
