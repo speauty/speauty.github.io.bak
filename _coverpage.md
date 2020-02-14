@@ -1,4 +1,4 @@
-# Blog of Speauty
+# Docs of Speauty
 ## A code monkey without thinking, 
 ## so don't beg for karma here.
 
