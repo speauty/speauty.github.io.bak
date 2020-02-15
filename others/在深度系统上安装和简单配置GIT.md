@@ -1,4 +1,5 @@
-老规矩, 检测一下系统: 
+#### 在深度系统上安装和简单配置GIT {docsify-ignore}
+###### 查看当前系统
 ```bash
 > uname -a
 > Linux speauty-PC 4.15.0-30deepin-generic #31 SMP Fri Nov 30 04:29:02 UTC 2018 x86_64 GNU/Linux
@@ -7,7 +8,7 @@
 ```
 ![uname.png](../source/uname.png)
 
-直接使用apt安装git, 听说这个东东具有超级牛力:
+###### 安装GIT
 ```bash
 > sudo apt install git
 > ...
@@ -16,10 +17,10 @@
 ```
 ![git-install.png](../source/git-install.png)
 
-生成秘钥和公钥, 由于我之前已经设置过, 所以有个 `overwrite` 的提示:
+###### 生成秘钥和公钥
 ![ssh-keygen.png](../source/ssh-keygen.png)
 
-很是折腾啊, 刚整了有半个小时吧, 之前也没遇到这种事:
+###### 解决一个密钥错误的问题
 
 ![ssh-test-github.png](../source/ssh-test-github.png)
 
@@ -31,15 +32,15 @@
 
 ![ssh-list.png](../source/ssh-list.png)
 
-经过上面处理后, 就可以测试通了:
+###### SSH测试
 
 ![ssh-test-github-ok.png](../source/ssh-test-github-ok.png)
 
-是不是还忘了什么?  是了, 在github上添加公钥, 将后缀为pub文件的内容复制过去即可:
+###### 在github上添加公钥
 
 ![github-add-public-key.png](../source/github-add-public-key.png)
 
-还有git的配置, 其实大多也就是配个名称和邮箱:
+###### 配置本地GIT的名称和邮箱
 
 ![git-sets.png](../source/git-sets.png)
 

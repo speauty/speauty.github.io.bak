@@ -1,13 +1,17 @@
 * [README](/README.md)
 * Linux
 * MySQL
+   * [MySQL用户的相关操作](/mysql/MySQL用户的相关操作.md)
 * PHP
-  * [YAF填坑历程](/php/YAF填坑历程.md)
-  * [环境搭建](/php/环境搭建.md)
+   * [PHP严格模式解读](/php/PHP严格模式解读.md)
+   * [xlswriter扩展](/php/xlswriter扩展.md)
+   * [YAF填坑历程](/php/YAF填坑历程.md)
+   * [环境搭建](/php/环境搭建.md)
 * Redis
+   * [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
 * Others
-  * [XUBUNTU忘记登陆密码](/others/XUBUNTU忘记登陆密码.md)
-  * [VirtualBox配置共享文件夹](/others/VirtualBox配置共享文件夹.md)
-  * [在深度系统上安装和简单配置GIT](/others/在深度系统上安装和简单配置GIT.md)
-  * [通过putty-key生成秘钥登录linux](/others/通过putty-key生成秘钥登录linux.md)
-  * [Docker基础学习](/others/Docker基础学习.md)
+   * [Docker基础学习](/others/Docker基础学习.md)
+   * [XUBUNTU忘记登陆密码](/others/XUBUNTU忘记登陆密码.md)
+   * [VirtualBox配置共享文件夹](/others/VirtualBox配置共享文件夹.md)
+   * [在深度系统上安装和简单配置GIT](/others/在深度系统上安装和简单配置GIT.md)
+   * [深度系统屏幕闪烁](/others/深度系统屏幕闪烁.md)
