@@ -1,4 +1,6 @@
 ###### 更新日志:
+* 2020-02-19
+  1. 新增文档: [Linux下的压缩和解压: gzip](/linux/Linux下的压缩和解压.md?id=gzip);
 * 2020-02-15
   1. 迁移文档: [YAF填坑历程](/php/YAF填坑历程.md);
   2. 迁移文档: [XUBUNTU忘记登陆密码](/others/XUBUNTU忘记登陆密码.md)
