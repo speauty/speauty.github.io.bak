@@ -9,8 +9,8 @@
   5. 迁移文档: [深度系统屏幕闪烁](/others/深度系统屏幕闪烁.md)
   6. 迁移文档: [Docker基础学习](/others/Docker基础学习.md)
   7. 迁移文档: [MySQL用户的相关操作](/others/MySQL用户的相关操作.md)
-  8. 迁移文档: [PHP严格模式解读](/others/PHP严格模式解读.md)
+  8. 迁移文档: [php严格模式解读](/others/php严格模式解读.md)
   9. 迁移文档: [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
-  10. 迁移文档: [xlswriter扩展](/php/xlswriter扩展.md)
+  10. 迁移文档: [php安装xlswriter扩展](/php/php安装xlswriter扩展.md)
 * 2020-02-14
    1. 新增文档： [增加CentOS上搭建LNMP](/php/环境搭建.md?id=在cenos上搭建lnmp环境);

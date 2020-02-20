@@ -1,4 +1,4 @@
-#### PHP严格模式解读 {docsify-ignore}
+#### php严格模式解读 {docsify-ignore}
 
 语法是这样的: `declare(strict_types=1);`, 需要放在PHP脚本文件其他输出之前最先声明的位置.否则会报以下致命语法错误:
 ```php

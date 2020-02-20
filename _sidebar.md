@@ -4,8 +4,8 @@
 * MySQL
    * [MySQL用户的相关操作](/mysql/MySQL用户的相关操作.md)
 * PHP
-   * [PHP严格模式解读](/php/PHP严格模式解读.md)
-   * [xlswriter扩展](/php/xlswriter扩展.md)
+   * [php严格模式解读](/php/php严格模式解读.md)
+   * [php安装xlswriter扩展](/php/php安装xlswriter扩展.md)
    * [YAF填坑历程](/php/YAF填坑历程.md)
    * [环境搭建](/php/环境搭建.md)
 * Redis
