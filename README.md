@@ -1,8 +1,10 @@
 ###### 更新日志:
+* 2020-02-20
+  1. 新增文档: [配置Docker中的php解释器](/php/配置Docker中的php解释器.md)
 * 2020-02-19
-  1. 新增文档: [Linux下的压缩和解压: gzip](/linux/Linux下的压缩和解压.md?id=gzip);
+  1. 新增文档: [Linux下的压缩和解压: gzip](/linux/Linux下的压缩和解压.md?id=gzip)
 * 2020-02-15
-  1. 迁移文档: [YAF填坑历程](/php/YAF填坑历程.md);
+  1. 迁移文档: [YAF填坑历程](/php/YAF填坑历程.md)
   2. 迁移文档: [XUBUNTU忘记登陆密码](/others/XUBUNTU忘记登陆密码.md)
   3. 迁移文档: [VirtualBox配置共享文件夹](/others/VirtualBox配置共享文件夹.md)
   4. 迁移文档: [在深度系统上安装和简单配置GIT](/others/在深度系统上安装和简单配置GIT.md)
@@ -13,4 +15,4 @@
   9. 迁移文档: [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
   10. 迁移文档: [php安装xlswriter扩展](/php/php安装xlswriter扩展.md)
 * 2020-02-14
-   1. 新增文档： [增加CentOS上搭建LNMP](/php/环境搭建.md?id=在cenos上搭建lnmp环境);
+   1. 新增文档： [增加CentOS上搭建LNMP](/php/环境搭建.md?id=在cenos上搭建lnmp环境)

@@ -8,6 +8,7 @@
    * [php安装xlswriter扩展](/php/php安装xlswriter扩展.md)
    * [YAF填坑历程](/php/YAF填坑历程.md)
    * [环境搭建](/php/环境搭建.md)
+   * [配置Docker中的php解释器](/php/配置Docker中的php解释器.md)
 * Redis
    * [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
 * Others
