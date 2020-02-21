@@ -1,4 +1,6 @@
 * [README](/README.md)
+* Go
+  * [Go实习生](/go/Go实习生.md)
 * Linux
    * [Linux下的压缩和解压](/linux/Linux下的压缩和解压.md)
 * MySQL
