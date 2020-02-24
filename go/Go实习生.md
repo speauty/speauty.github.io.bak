@@ -38,3 +38,4 @@ go version
 * 设置快捷方式, 主要有两种:
    * 设置软链接 `sudo ln -s /opt/GoLand/bin/goland.sh /usr/bin/goland` , 在搜索框一搜就出来了, 可以拖动图标到桌面或任务栏;
    * 软件提供的工具 `tools => create desktop entry`, 也可实现.
+* [详细破解参考](https://zhile.io/2018/08/19/jetbrains-license-server-crack.html).

@@ -3,6 +3,7 @@
   * [Go实习生](/go/Go实习生.md)
 * Linux
    * [Linux下的压缩和解压](/linux/Linux下的压缩和解压.md)
+   * [Linux批量杀死进程](/linux/Linux批量杀死进程.md)
 * MySQL
    * [MySQL用户的相关操作](/mysql/MySQL用户的相关操作.md)
 * PHP
@@ -11,6 +12,7 @@
    * [YAF填坑历程](/php/YAF填坑历程.md)
    * [环境搭建](/php/环境搭建.md)
    * [配置远程php解释器](/php/配置远程php解释器.md)
+   * [有关pdo_mysql连接mysql的2002错误](/php/有关pdo_mysql连接mysql的2002错误.md)
 * Redis
    * [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
 * Others
