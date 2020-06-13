@@ -1,4 +1,4 @@
-# Docs of Speauty
+# SPEAUTY
 ## A code monkey without thinking, 
 ## so don't beg for karma here.
 
