@@ -9,7 +9,6 @@
   <meta name="description" content="speauty,阅微,阅微-speauty">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="./assets/vue.css">
-  <link rel="stylesheet" href="./assets/gitalk/gitalk.css">
   <link rel="stylesheet" href="./assets/boot.css">
 </head>
 <body>
@@ -86,24 +85,6 @@
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.register('/assets/sw.js')
     }
-  </script>
-
-  <script src="./assets/plugins/gitalk.min.js"></script>
-  <script src="./assets/gitalk/gitalk.min.js"></script>
-
-  <script>
-    const gitalk = new Gitalk({
-      clientID: 'e9997432434c8f0c194b',
-      clientSecret: '9704d80386f29c970654e86078ea1d99713497bb',
-      // clientID: 'db71fd1f2ac216ffd873',
-      // clientSecret: '3f02ed91616b1d08f601cdcee05bf22d78e7de09',
-      repo: 'speauty.github.io',
-      owner: 'speauty',
-      admin: 'speauty',
-      // facebook-like distraction free mode
-      distractionFreeMode: false,
-      id: 'speauty.github.io',
-    })
   </script>
 </body>
 </html>
