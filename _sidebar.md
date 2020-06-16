@@ -5,6 +5,7 @@
    * [YAF填坑历程](/php/YAF填坑历程.md)
    * [环境搭建](/php/环境搭建.md)
    * [配置远程php解释器](/php/配置远程php解释器.md)
+   * [PHP源码学习](/php/PHP源码学习.md)
 * Redis
    * [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
 * Others
