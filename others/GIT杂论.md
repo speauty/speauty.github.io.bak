@@ -17,3 +17,5 @@ Status   Name               DisplayName
 Running  ssh-agent          OpenSSH Authentication Agent
 ```
 基本上就好了, 可以使用`ssh-add`添加新的配置, 可以使用`ssh-add -l`查看已有的配置项.
+
+不过最终还是挂掉, 采用`git bash`替代windows terminal, 可以解决`ssh-agent`进程无法锁定的问题. 关于`ssh-agent`引发的问题可以参考[在 PowerShell 中正确配置 git 与 OpenSSH](https://www.cielyang.com/%E5%9C%A8-powershell-%E4%B8%AD%E6%AD%A3%E7%A1%AE%E9%85%8D%E7%BD%AE-git-%E4%B8%8E-openssh/)
