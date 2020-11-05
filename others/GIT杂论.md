@@ -90,3 +90,20 @@ git fetch --all
    * `git status` 乱码: `git config --global core.quotepath false` `git config --global i18n.logoutputencoding utf-8`
    * `git log` 乱码: `git config --global i18n.commitencoding utf-8`
    * 如果是Linux系统，需要设置环境变量 `export LESSCHARSET=utf-8`
+
+## 常用命令介绍
+   * ### git init
+   
+   ?> 创建一个空的`GIT`仓库或重新初始化一个已存在的仓库
+   
+   ?> `git init [-q | --quiet] [--bare] [--template=<template-directory>] [--shared[=<permissions>]] [<directory>]`
+      * -q|--quiet: 静默模式执行, 只会打印一些错误和警告;
+      * --bare: 创建一个裸库. 如果 `GIT_DIR` 环境变量没有设置, 该库就在当前工作目录创建, 相当于共享库, 每个加入者都可以往里面提交代码;
+      * --template=\<template-directory\>: 指定要使用模板的目录;
+      * --shared\[=\<permissions\>\]: 指定 Git 存储库在多个用户之间共享. permissions主要有以下可选值, 默认为`group`:
+         * `umask`: 使用 `umask(2)` 返回的权限. 未指定 `--shared` 时，此为默认值;
+         * `group`: 使存储库组可写;
+         * `all[everybody|world]`: 与使用 `group` 选项相同, 但使存储库对所有用户可读;
+         * `0xxx`: `0xxx` 是一个八进制数，每个文件的模式均为 `0xxx`. 这是严格权限控制, 覆盖上面权限.
+      * directory: 指定目录执行, 如果对应目录不存在, 就创建对应目录.
+      
