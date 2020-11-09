@@ -12,12 +12,50 @@
    * PHP镜像: `docker pull php:7.3-fpm-alpine`
 * 创建容器
    * PHP容器: `docker run -it -d --restart=always -p 9000:9000 -v E:\EZGOAL:/var/www/html --name PHPEZGOAL php:7.3-fpm-alpine`
-   * NGINX容器: ``
+   ```
+   需要将项目目录映射进容器(-v), 并且支持后台运行(-d)和自动重启(--restart=always) 
+   ```
+   * NGINX容器: `docker run -it -d -restart=always -p 8001:8001 -p 8002:8002 -p 8003:8003 -v  E:\EZGOAL:/var/www/html --name NGINXEZGOAL --link PHPEZGOAL:php73 nginx:alpine`
+   ```
+   和PHP容器大致相同, 只不过这里需要多几个端口映射, 
+   因为映射的目录中包含了好几个项目, 所以就多开了几个端口, 以便访问不同的项目;
+   由于项目需要访问php容器, 为了减少传输, 直接将PHP关联到当前容器(--link 容器名:别名)
+   ```
+* 增加NGINX配置和PHP项目必需的扩展, 就可以通过对应端口访问项目.
 
-* ##### 
+
+#### 附录
 * **Composer**
-1. `ln -f /www/services/php/73/bin/php /usr/local/bin/php`
-2. `php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"`
-3. `php composer-setup.php`
-4. `mv composer.phar /usr/local/bin/composer`
-5. `composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/`
+
+?> 由于大多PHP项目依赖composer管理各种扩展, 为解决这个问题, 需要PHP环境中单独安装composer, 不采用composer容器, 防止扩展需要单独安装的复杂性.
+
+   1. `php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"`
+   2. `php composer-setup.php`
+   3. `mv composer.phar /usr/local/bin/composer`
+   4. `composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/`
+
+* **PHP安装扩展**
+
+?> 现在安装扩展, 大致分为三种: docker容器安装, 编译安装和pecl安装
+
+   * docker容器安装
+      1. 采用脚本安装, 在容器里面主要有几个脚本, 这里单独介绍一下, 这个有很大的局限性, 就是只能安装在PHP源码扩展目录(/usr/src/php/ext/)中存在的扩展, 如果其他扩展的话，可以先将对应源码下载并解压到对应目录
+         * `docker-php-source` PHP源代码的管理, 主要有解压和删除
+         ```
+         docker-php-source extract: 可将源代码解压至指定目录, 如果对应不存在的话
+         docker-php-source delete: 删除解压的源代码目录
+         ```
+         * `docker-php-ext-enable` 开启扩展
+         ```
+         docker-php-ext-enable module-name[module-name...]: 开启指定扩展
+         直接将对应扩展配置文件在php.ini中载入, 就相当开启扩展
+         ```
+         * `docker-php-ext-configure` 配置扩展
+         ```
+         docker-php-ext-configure 扩展名 配置参数
+         这个是配置扩展编译时的参数, 好像对已编译好的扩展无效, 一般配合docker-php-ext-install使用
+         ```
+         * `docker-php-ext-install` 安装扩展
+         ```
+         docker-php-ext-install 扩展名
+         ```
