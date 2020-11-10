@@ -84,6 +84,19 @@ git fetch --all
 # 如果这里出现 ssh: connect to host domain port 22: Connection timed out, 那问题应该就是无法锁定ssh-agent程序, 可以 ssh-agent bash后再进行操作
 # 不过这里有个超级麻烦的问题, 就是每次进入ssh-agent都要反复设置密钥, 好像之前设置的没有保留.
 # 的确是个大问题.
+# 这个问题已经修复, 使用 ~/.ssh/config配置文件, 可指定Host使用的密钥, 大概格式如下
+Host 主机地址
+HostName 主机名
+IdentityFile 密钥
+User 使用者
+
+我这里就是这样配置的
+Host github.com
+HostName github.com
+IdentityFile C:\Users\speauty\.ssh\id_rsa
+User speauty
+
+如果有多个版本控制主机, 就可以针对配置, 不过在同个主机上配置多套密钥, 那就可能存在之前的问题, 这个可以空了试一下.
 ```
 
 * 解决乱码问题
