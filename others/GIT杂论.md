@@ -89,13 +89,11 @@ Host 主机地址
 HostName 主机名
 IdentityFile 密钥
 User 使用者
-
 我这里就是这样配置的
 Host github.com
 HostName github.com
 IdentityFile C:\Users\speauty\.ssh\id_rsa
 User speauty
-
 如果有多个版本控制主机, 就可以针对配置, 不过在同个主机上配置多套密钥, 那就可能存在之前的问题, 这个可以空了试一下.
 ```
 
