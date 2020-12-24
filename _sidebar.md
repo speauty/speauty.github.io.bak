@@ -1,17 +1,3 @@
 * [README](/README.md)
-* PHP
-   * [环境构建](/php/PHP环境构建.md)
-   * [安装扩展](/php/PHP安装扩展.md)
-   * [php严格模式解读](/php/php严格模式解读.md)
-   * [YAF填坑历程](/php/YAF填坑历程.md)
-   * [配置远程php解释器](/php/配置远程php解释器.md)
-   * [PHP源码学习](/php/PHP源码学习.md)
-* Redis
-   * [有关redis的一些安全配置](/redis/有关redis的一些安全配置.md)
-* Others
-   * [Docker基础学习](/others/Docker基础学习.md)
-   * [XUBUNTU忘记登陆密码](/others/XUBUNTU忘记登陆密码.md)
-   * [VirtualBox配置共享文件夹](/others/VirtualBox配置共享文件夹.md)
-   * [在深度系统上安装和简单配置GIT](/others/在深度系统上安装和简单配置GIT.md)
-   * [深度系统屏幕闪烁](/others/深度系统屏幕闪烁.md)
-   * [GIT杂论](/others/GIT杂论.md)
+* 编程语言
+   * [PHP(Hypertext Preprocessor)](/articals/prog.language.php.md)
