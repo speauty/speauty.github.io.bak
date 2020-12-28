@@ -8,46 +8,46 @@
 
 #### DOCKER构建
 ?> 非docker-compose方式
-
+* 创建专属网络容器
+```shell script
+# 创建dev虚拟网络, 默认为bridge模式, 与宿主机可通信, 并处于该网络中的容器会形成一个容器内部局域网
+docker create network dev
+```
 * 下载相应镜像
-   * Nginx镜像: `docker pull nginx:alpine`
-   * PHP镜像: `docker pull php:7.3-fpm-alpine`
+   * nginx镜像: `docker pull nginx:alpine`
+   * php镜像: `docker pull php:7.3-fpm-alpine`
 * 创建容器
-   * PHP容器: `docker run -it -d --restart=always -p 9000:9000 -v E:\EZGOAL:/var/www/html --name PHPEZGOAL php:7.3-fpm-alpine`
-   ```
-   需要将项目目录映射进容器(-v), 并且支持后台运行(-d)和自动重启(--restart=always) 
-   ```
-   * NGINX容器: `docker run -it -d -restart=always -p 8001:8001 -p 8002:8002 -p 8003:8003 -v  E:\EZGOAL:/var/www/html --name NGINXEZGOAL --link PHPEZGOAL:php73 nginx:alpine`
-   ```
-   和PHP容器大致相同, 只不过这里需要多几个端口映射, 
-   因为映射的目录中包含了好几个项目, 所以就多开了几个端口, 以便访问不同的项目;
-   由于项目需要访问php容器, 为了减少传输, 直接将PHP关联到当前容器(--link 容器名:别名)
-   ```
-
-#### 附录
-* **Composer**
-
-?> 由于大多PHP项目依赖composer管理各种扩展, 为解决这个问题, 需要PHP环境中单独安装composer, 不采用composer容器, 防止扩展需要单独安装的复杂性.
-
-   1. `php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"`
-   2. `php composer-setup.php`
-   3. `mv composer.phar /usr/local/bin/composer`
-   4. `composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/`
-
-* **配置文件**
+```shell script
+# 创建php容器
+docker run -it -d --restart=always -p 9000:9000 -v /home/$USER/PHPScripts:/var/www/html --name php73 --network dev --network-alias php73 php:7.3-fpm-alpine
+# 创建nginx容器
+docker run -it -d -restart=always -p 80-88:80-88 -v  /home/$USER/PHPScripts:/var/www/html --name nginx --network dev --network-alias nginx nginx:alpine
+# 两个容器需要映射相同的目录, 保证nginx转向php容器的资源一致
+# 端口映射需要注意一点, 在win环境下, 好像不可以使用-表示连续端口映射
+# 使用专属网络, 就可以不使用--link, 挂载专用解释器容器, 就和使用连接访问php解释器一致, 应该和--link相似
 ```
-# fpm.conf
-location ~ \.php?.*$
-{
-  # php-fpm.sock 路径
-  fastcgi_pass   php73:9000;
-  fastcgi_split_path_info  ^((?U).+\.php)(/?.+)$;
-  fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-  fastcgi_param  PATH_INFO  $fastcgi_path_info;
-  fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;
-  include fastcgi_params;
-}
-```
+* 其他设置
+   * 调整容器镜像源, 当前涉及容器系统一致, 均可使用`sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories`设置阿里源;
+   * 配置nginx转php, 当前为php73-nginx版
+   ```
+   location ~ \.php?.*$
+   {
+     # php-fpm.sock
+     fastcgi_pass   php73:9000;
+     fastcgi_split_path_info  ^((?U).+\.php)(/?.+)$;
+     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+     fastcgi_param  PATH_INFO  $fastcgi_path_info;
+     fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;
+     include fastcgi_params;
+   }
+   ```
+   * 设置php的composer, 该操作在对应的php容器中执行即可
+   ```shell script
+   php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+   php composer-setup.php
+   mv composer.phar /usr/local/bin/composer
+   composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+   ```
 
 ### 扩展安装
 
