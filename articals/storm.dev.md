@@ -14,3 +14,25 @@
      // 开启严格模式
      declare(strict_types=1);
    ```
+   
+2. 在Ubuntu安装redis
+```shell script
+# 下载redis安装包
+wget https://download.redis.io/releases/redis-6.0.9.tar.gz
+# 解压在当前目录
+tar -zxf redis-6.0.9.tar.gz
+sudo mv redis-6.0.9 /usr/local/redis
+cd /usr/local/redis/utils
+vim install_server.sh
+# 注释以下代码
+#bail if this system is managed by systemd
+#_pid_1_exe="$(readlink -f /proc/1/exe)"
+#if [ "${_pid_1_exe##*/}" = systemd ]
+#then
+#       echo "This systems seems to use systemd."
+#       echo "Please take a look at the provided example service unit files in this directory, and adapt and install them. Sorry!"
+#       exit 1
+#fi
+#unset _pid_1_exe
+
+```
