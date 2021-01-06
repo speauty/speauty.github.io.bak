@@ -48,6 +48,59 @@ docker run -it -d -restart=always -p 80-88:80-88 -v  /home/$USER/PHPScripts:/var
    mv composer.phar /usr/local/bin/composer
    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
    ```
+  
+#### Linux编译安装(Ubuntu)
+   * 创建组和用户 `sudo useradd -l -M -U -s /sbin/nologin php-fpm`
+   * 下载安装包 `wget https://www.php.net/distributions/php-7.3.25.tar.gz`
+   * 解压并进入对应目录 `tar -zxf php-7.3.25.tar.gz && cd php-7.3.25`
+   * 安装依赖 `sudo apt-get install libxml2-dev libpq-dev`
+   * 生成配置 `./configure --prefix=/usr/local/php/73 --enable-fpm --with-fpm-user=php-fpm --with-fpm-group=php-fpm --enable-bcmath --enable-mbstring --with-mysqli --with-pdo-mysql --with-pdo-pgsql`
+   * 编译安装 `sudo make && sudo make install`
+   * 配置文件
+   ```shell script
+sudo cp php.ini-development /usr/local/php/73/lib/php.ini
+sudo cp /usr/local/php/73/etc/php-fpm.conf.default /usr/local/php/73/etc/php-fpm.conf
+cd /usr/local/php/73/etc/php-fpm.d
+sudo cp www.conf.default www.conf
+sudo vim www.conf
+# listen = 127.0.0.1:9000 => ;listen = 127.0.0.1:9000
+# 并在下一行增加 listen=/run/fpm73.sock
+# 取消注释 listen.owner = php-fpm
+# 取消注释 listen.group = php-fpm
+# 取消注释并将其改为当前 listen.mode = 0666
+```
+   * 配置 php-fpm.service
+   ```
+[Unit]
+Description=The PHP73 FastCGI Process Manager
+After=syslog.target network.target
+[Service]
+Type=simple
+PIDFile=/run/fpm73.pid
+ExecStart=/usr/local/php/73/sbin/php-fpm -y /usr/local/php/73/etc/php-fpm.conf
+ExecReload=/bin/kill -USR2 $PIDFile
+PrivateTmp=false
+Restart=on-abort
+[Install]
+WantedBy=multi-user.target
+```
+```shell script
+sudo cp fpm73.service /lib/systemd/system/fpm73.service && sudo chmod +x /lib/systemd/system/fpm73.service
+```
+   * nginx和php-fpm的关联
+   ```
+location ~ \.php?.*$
+{
+  # php-fpm.sock
+  fastcgi_pass   unix:/run/fpm73.sock;
+  fastcgi_split_path_info  ^((?U).+\.php)(/?.+)$;
+  fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+  fastcgi_param  PATH_INFO  $fastcgi_path_info;
+  fastcgi_param  PATH_TRANSLATED  $document_root$fastcgi_path_info;
+  include fastcgi_params;
+}
+# 将该文件移至nginx/conf下
+```
 
 ### 扩展安装
 
@@ -74,7 +127,13 @@ docker run -it -d -restart=always -p 80-88:80-88 -v  /home/$USER/PHPScripts:/var
          ```
          docker-php-ext-install 扩展名
          ```
-
+   * 编译安装(以php_redis为例)
+      * 下载扩展包 `wget https://pecl.php.net/get/redis-5.3.2.tgz`
+      * 解压扩展包 `tar -zxf redis-5.3.2.tgz && cd redis-5.3.2`
+      * 获取对应PHP信息并生成配置文件 `/usr/local/php/73/bin/phpize && ./configure -with-php-config=/usr/local/php/73/bin/php-config`
+      * 编译并安装 `sudo make && sudo make install`
+      * 开启扩展测试, 在php.ini添加`extension=redis`, `php --ri redis`
+      
 ### 相关框架
 #### Yet Another Framework
 > 介绍, 巴拉巴拉......（以后再说）

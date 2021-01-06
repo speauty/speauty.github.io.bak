@@ -22,8 +22,17 @@ wget https://download.redis.io/releases/redis-6.0.9.tar.gz
 # 解压在当前目录
 tar -zxf redis-6.0.9.tar.gz
 sudo mv redis-6.0.9 /usr/local/redis
-cd /usr/local/redis/utils
-vim install_server.sh
+cd /usr/local/redis/
+# adlist.c:32:10: fatal error: stdlib.h: 没有那个文件或目录
+# 换国外源, 重装gcc
+# zmalloc.h:50:10: fatal error: jemalloc/jemalloc.h: 没有那个文件或目录
+# make MALLOC=libc
+# sentinel.c:34:10: fatal error: openssl/ssl.h: 没有那个文件或目录
+# sudo apt-get install libssl-dev
+# cc: error: ../deps/hiredis/libhiredis_ssl.a: 没有那个文件或目录
+# make distclean
+make MALLOC=libc && sudo make install
+cd ./utils
 # 注释以下代码
 #bail if this system is managed by systemd
 #_pid_1_exe="$(readlink -f /proc/1/exe)"
@@ -34,5 +43,45 @@ vim install_server.sh
 #       exit 1
 #fi
 #unset _pid_1_exe
+sudo ./install_server.sh
+sudo systemctl enable redis_6379
+```
 
+3. 在Ubuntu安装node
+```shell script
+wget https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz
+xz -d node-v14.15.4-linux-x64.tar.xz
+tar -xf node-v14.15.4-linux-x64.tar
+sudo mv node-v14.15.4-linux-x64 /usr/local/node
+cd /usr/local/node
+# 换淘宝源
+npm config set registry https://registry.npm.taobao.org
+echo export PATH="/usr/local/node/bin:$PATH" >> /etc/profile
+```
+
+4. 在Ubuntu安装nginx
+```shell script
+sudo useradd -l -M -U -s /sbin/nologin nginx
+sudo apt-get install openssl libssl-dev libpcre3-devel zlib1g-dev
+wget http://nginx.org/download/nginx-1.18.0.tar.gz
+tar -zxf nginx-1.18.0.tar.gz
+cd nginx-1.18.0
+./configure --prefix=/usr/local/nginx --user=nginx --group=nginx
+echo export PATH="/usr/local/nginx/sbin:$PATH" >> /etc/profile
+vim /usr/lib/systemd/system/nginx.service
+sudo chmod 755 /usr/lib/systemd/system/nginx.service
+sudo systemctl daemon-reload
+```
+```
+[Unit]
+Description=nginx
+After=network.target
+[Service]
+Type=forking
+ExecStart=/usr/local/nginx/sbin/nginx
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
 ```
