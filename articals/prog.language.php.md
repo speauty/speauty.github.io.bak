@@ -69,23 +69,10 @@ sudo vim www.conf
 # 取消注释 listen.group = php-fpm
 # 取消注释并将其改为当前 listen.mode = 0666
 ```
-   * 配置 php-fpm.service
-   ```
-[Unit]
-Description=The PHP73 FastCGI Process Manager
-After=syslog.target network.target
-[Service]
-Type=simple
-PIDFile=/run/fpm73.pid
-ExecStart=/usr/local/php/73/sbin/php-fpm -y /usr/local/php/73/etc/php-fpm.conf
-ExecReload=/bin/kill -USR2 $PIDFile
-PrivateTmp=false
-Restart=on-abort
-[Install]
-WantedBy=multi-user.target
-```
+   * 配置 php-fpm.service, 在源码包存在模板`sapi/fpm/php-fpm.service`
 ```shell script
-sudo cp fpm73.service /lib/systemd/system/fpm73.service && sudo chmod +x /lib/systemd/system/fpm73.service
+# 其中的pid file要和php-fpm中配置一致, 需要注意的是
+sudo cp sapi/fpm/php-fpm.service /lib/systemd/system/fpm73.service && sudo chmod +x /lib/systemd/system/fpm73.service
 ```
    * nginx和php-fpm的关联
    ```

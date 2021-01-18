@@ -67,6 +67,7 @@ wget http://nginx.org/download/nginx-1.18.0.tar.gz
 tar -zxf nginx-1.18.0.tar.gz
 cd nginx-1.18.0
 ./configure --prefix=/usr/local/nginx --user=nginx --group=nginx
+sudo make && sudo make install
 echo export PATH="/usr/local/nginx/sbin:$PATH" >> /etc/profile
 vim /usr/lib/systemd/system/nginx.service
 sudo chmod 755 /usr/lib/systemd/system/nginx.service
