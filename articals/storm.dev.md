@@ -86,3 +86,17 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 ```
+
+5. 安装带freetype的php-gd
+```shell script
+# 下载freetype, 因为通过apt install libfreetype6-dev行不通, 就只好单独安装了
+sudo wget https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz
+sudo tar zxf freetype-2.9.tar.gz
+cd freetype-2.9 
+./configure --prefix=/usr/include/freetype && make && sudo make install
+# 然后切到php源码目录的ext/gd下
+/usr/local/php/bin/phpize
+./configure --with-php-config=/usr/local/php/bin/php-config --with-freetype-dir=/usr/include/freetype
+make && make install
+# 在php.ini添加一条记录 extension=gd, 重启php-fpm即可
+```
