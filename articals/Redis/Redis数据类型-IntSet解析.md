@@ -1,10 +1,10 @@
-## `Redis` 源码之数据类型解析-`IntSet` {docsify-ignore}
+## Redis源码之数据类型解析-IntSet {docsify-ignore}
 
 当前分析 `Redis` 版本为6.2，需要注意。
 
 整数集合（`IntSet`），`Redis` 用于保存整数值的集合抽象数据结构，可以保存 `int16_t`、`int32_t` 或者 `int64_t` 的整数值，并且集合满足唯一性（集合不包含重复项）和有序性（集合中的元素按照从小到大有序排序）。
 
-### 基础结构
+#### 基础结构
 
 ```c
 typedef struct intset { // 整数集合
@@ -202,7 +202,7 @@ static void intsetMoveTail(intset *is, uint32_t from, uint32_t to) {
 
 
 
-### 接口函数
+#### 接口函数
 
 ##### `intsetNew`
 
@@ -380,6 +380,6 @@ int intsetValidateIntegrity(const unsigned char *p, size_t size, int deep) {
 }
 ```
 
-### 本章小结
+#### 本章小结
 
 该数据结构需要关注的是升级，这一策略，提高了集合的灵活性，并且节约内存。将不同整型分类放置到对应的整数集合。必要时会触发升级，从范围小的升到范围大的类型。不过，没有降级的策略。

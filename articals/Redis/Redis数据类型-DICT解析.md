@@ -4,7 +4,7 @@
 
 `DICT`，字典数据结构，本质是哈希表。相关文件主要有 `dict.h` 和 `dict.c`。
 
-### 基础结构
+#### 基础结构
 
 `dictEntry` 是哈希节点，键值对，其中值采用了联合体 `v`，从结构体中的 `*next` 可以看出，这是个单向链表，必然头节点是单独保存的，挂在哈希表上。
 
@@ -84,7 +84,7 @@ typedef struct dictIterator {
 } dictIterator;
 ```
 
-### 宏定义函数
+#### 宏定义函数
 
 ##### `DICT_NOTUSED`
 
@@ -181,7 +181,7 @@ typedef struct dictIterator {
 
 继续指定字典 rehash 过程。
 
-### 常量和变量
+#### 常量和变量
 
 ##### `DICT_OK`
 
@@ -219,7 +219,7 @@ typedef struct dictIterator {
 
 静态变量。哈希函数种子。
 
-### 哈希函数
+#### 哈希函数
 
 ##### `dictSetHashFunctionSeed`
 
@@ -237,7 +237,7 @@ typedef struct dictIterator {
 
 也是哈希函数。套壳 `siphash_nocase` 实现，具体实现在 `siphash.c` 文件。
 
-### 私有函数
+#### 私有函数
 
 ##### `_dictExpandIfNeeded`
 
@@ -346,7 +346,7 @@ int _dictInit(dict *d, dictType *type,
 static int _dictInit(dict *ht, dictType *type, void *privDataPtr);
 ```
 
-### 接口函数
+#### 接口函数
 
 ##### `_dictReset`
 
@@ -1158,7 +1158,7 @@ dictEntry **dictFindEntryRefByPtrAndHash(dict *d, const void *oldptr, uint64_t h
 }
 ```
 
-### 本章小结
+#### 本章小结
 
 通过对源码的局部解读，可以看到字典的实现基于哈希表，而C语言没有这类型，`Redis` 自行实现了一套，采用 `dict > ht > table > headptr` 的结构。然而哈希冲突是个很重要的问题（当有两个或以上数量的键被分配到了哈希表数组的同一个索引上面的情况），这里采用了公开链地址法解决该问题，由于每个哈希节点都一个 `next` 指针，所以当多个节点分配到同一个索引上时，可形成单向链表。这也难免在查找采用循环结构。不过这也是添加新节点总是加到链表头部的原因，不可能迭代到尾节点追加，太废了。
 

@@ -1,4 +1,4 @@
-## Redis源码之内存模型解析-zmalloc {docsify-ignore}
+## Redis源码之内存模型解析-ZMalloc {docsify-ignore}
 
 当前分析Redis版本为6.2，需要注意。
 
@@ -633,10 +633,3 @@ size_t zmalloc_get_memory_size(void) {
 最后几个函数就不细看了，着实打脑壳。毕竟还年轻。基本都是OS特殊方法的。
 
 不过通篇看下来，似乎没看见什么特别的地方，`Redis` 对其他内存分配的接口进行了一番包装使用，主要有这几种：`Tcmalloc` `Jemalloc`，以及 `Apple` 的 `malloc/malloc.h` 和 `libc` 的 `malloc.h`。然后在内存分配时顺便也在指针前 `size_t` 字节中保存了本次分配内存可使用大小。就是各种 `malloc` `calloc` 和 `realloc` 操作。
-
-
-
-
-
-
-

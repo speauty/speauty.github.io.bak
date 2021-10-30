@@ -1,10 +1,10 @@
-## `Redis` 源码之数据类型解析-`List` {docsify-ignore}
+## Redis源码之数据类型解析-List {docsify-ignore}
 
 当前分析 `Redis` 版本为6.2，需要注意。
 
 `List`，链表，这里是双向链表，线性结构，这是一种常见的数据结构，拥有很高节点访问和重排的效率，`Redis` 自行实现的，`C` 语言没有这一数据结构。相关文件主要有 `adlist.h` 和 `adlist.c`。
 
-### 基础结构
+#### 基础结构
 
 这里倒是简单，就节点和持有节点的链表结构。
 
@@ -46,7 +46,7 @@ typedef struct list {
 } list;
 ```
 
-### 宏定义函数
+#### 宏定义函数
 
 ##### `listLength`
 
@@ -96,7 +96,7 @@ typedef struct list {
 
 获取链表的匹配句柄，`list->match`。
 
-### 接口函数
+#### 接口函数
 
 ##### `listCreate`
 
@@ -473,6 +473,6 @@ void listJoin(list *l, list *o) {
 }
 ```
 
-### 本章小结
+#### 本章小结
 
 也看到了，链表结构的简洁，在对元素的操作上确实高效，很少涉及到循环处理。
