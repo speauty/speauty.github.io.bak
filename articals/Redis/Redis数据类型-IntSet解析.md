@@ -22,7 +22,7 @@ typedef struct intset { // 整数集合
 } intset;
 ```
 
-### 私有函数
+#### 私有函数
 
 ##### `_intsetValueEncoding`
 
