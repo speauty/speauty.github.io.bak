@@ -8,5 +8,6 @@
          * [数据类型-ADList](/articals/Redis/Redis数据类型-ADList解析.md)
          * [数据类型-Dict](/articals/Redis/Redis数据类型-DICT解析.md)
          * [数据类型-IntSet](/articals/Redis/Redis数据类型-IntSet解析.md)
+         * [数据类型-ZipList](/articals/Redis/Redis数据类型-ZipList解析.md)
 * 一只菜鸟
    * [开发杂记](/articals/storm.dev.md)

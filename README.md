@@ -1,6 +1,8 @@
 ##### 更新记录
+* 2020.11.04
+    * **b006** 新增 [Redis源码之数据类型解析-ZipList](/articals/Redis/Redis数据类型-ZipList解析.md)
 * 2020.10.28
-    * **b005** 新增 [ Redis源码之数据类型解析-IntSet](/articals/Redis/Redis数据类型-IntSet解析.md)
+    * **b005** 新增 [Redis源码之数据类型解析-IntSet](/articals/Redis/Redis数据类型-IntSet解析.md)
 * 2020.10.27
     * **b003** 新增 [Redis源码之数据类型解析-Dict](/articals/Redis/Redis数据类型-DICT解析.md)
     * **b004** 新增 [Redis源码之数据类型解析-List](/articals/Redis/Redis数据类型-ADList解析.md)
