@@ -1,4 +1,6 @@
 ##### 更新记录
+* 2022.04.17
+  * 新增[Golang模块](/articals/prog.language.go.md)
 * 2020.11.04
     * **b006** 新增 [Redis源码之数据类型解析-ZipList](/articals/Redis/Redis数据类型-ZipList解析.md)
 * 2020.10.28

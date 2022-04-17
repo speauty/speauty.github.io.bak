@@ -1,6 +1,7 @@
 * [README](/README.md)
 * 编程之路
    * [PHP(Hypertext Preprocessor)](/articals/prog.language.php.md)
+   * [Golang](/articals/prog.language.go.md)
    * 源码解读
       * Redis
          * [内存模型-ZMalloc](/articals/Redis/Redis内存模型-zmalloc.md)
