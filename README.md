@@ -19,3 +19,5 @@
 3. 进入目录, 进行初始化: `docsify init`
 4. 启动服务: `docsify serve -p port[default: 3000]`
 5. 通过`http://localhost:port`访问
+
+[docsify传送门](https://docsify.js.org/#/zh-cn/)

@@ -1,5 +1,28 @@
 # Golang {docsify-ignore}
 
+### 环境构建
+?> [点击打开下载页面](https://golang.google.cn/dl/)，这里按OS区分
+#### Windows系统
+直接下载相应安装，双击安装即可。我这里使用的是[go1.17.9.windows-amd64.msi](https://golang.google.cn/dl/go1.18.1.windows-amd64.msi)，
+由于之前装有，这里就不单独安装。需要注意的是，我主机安装的版本是 `go1.16.2`。其实也没什么需要注意的，相对比较简单。
+
+可在终端输入 `go version` 查看当前版本。当然，有可能提示错误
+
+!> go: The term 'go' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+
+这表示 `go.exe` 没有在环境变量(这里指的是Path)中，需要在 `Win => 设置 => 系统 => 关于 => 高级系统设置 => 环境变量 => 系统变量(Path) => 新增`，
+填入 `go.exe` 所在的bin目录
+
+### go env 全解
+待补充。。。
+
+### go tool 全解
+待补充。。。
+
+### go command 全解
+待补充。。。
+
 ### gRPC服务
 
 #### 配置环境
@@ -65,7 +88,7 @@
   func (h *HelloWorld) Say(ctx context.Context, req *world.WorldRequest) (*world.WorldResponse, error) {
     log.Println("receive message:", req.GetSaySomething())
     resp := &world.WorldResponse{}
-    resp.ResponseSomething = "roger that!"
+    resp.responseSomething = "roger that!"
     return resp, nil
   }
   
@@ -91,41 +114,25 @@
 
   import (
     "context"
-    world "go.test/hello/proto"
-    "net"
+	world "go.test/hello/proto"
     "google.golang.org/grpc"
     "log"
   )
   
-  type HelloWorld struct {
-    world.UnimplementedWorldServer
-    h *world.WorldServer
-  }
-  
-  func (h *HelloWorld) MustEmbedUnimplementedWorldServer() {
-    panic("implement me")
-  }
-  
-  func (h *HelloWorld) Say(ctx context.Context, req *world.WorldRequest) (*world.WorldResponse, error) {
-    log.Println("receive message:", req.GetSaySomething())
-    resp := &world.WorldResponse{}
-    resp.ResponseSomething = "roger that!"
-    return resp, nil
-  }
-  
   func main() {
-    srv := grpc.NewServer()
-    world.RegisterWorldServer(srv, &HelloWorld{})
-  
-    listener, err := net.Listen("tcp", ":12345")
+    conn, err := grpc.Dial("127.0.0.1:12345", grpc.WithInsecure(), grpc.WithBlock())
     if err != nil {
-      log.Fatalf("failed to listen: %v", err)
+      log.Fatalf("did not connect: %v", err)
     }
+    defer func(conn *grpc.ClientConn) {
+      _ = conn.Close()
+    }(conn)
   
-    err = srv.Serve(listener)
-    if err != nil {
-      log.Fatalf("failed to serve: %v", err)
-    }
+    client := world.NewWorldClient(conn)
+	_, err = client.Say(context.Background(), &world.WorldRequest{saySomething: "world"})
+	if err != nil {
+      log.Fatalf("连接失败: %v", err)
+	}
   }
   ```
   
