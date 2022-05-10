@@ -11,7 +11,7 @@
 * 创建专属网络容器
 ```shell script
 # 创建dev虚拟网络, 默认为bridge模式, 与宿主机可通信, 并处于该网络中的容器会形成一个容器内部局域网
-docker create network dev
+docker network create dev
 ```
 * 下载相应镜像
    * nginx镜像: `docker pull nginx:alpine`
@@ -21,7 +21,7 @@ docker create network dev
 # 创建php容器
 docker run -it -d --restart=always -p 9000:9000 -v /home/$USER/PHPScripts:/var/www/html --name php73 --network dev --network-alias php73 php:7.3-fpm-alpine
 # 创建nginx容器
-docker run -it -d -restart=always -p 80-88:80-88 -v  /home/$USER/PHPScripts:/var/www/html --name nginx --network dev --network-alias nginx nginx:alpine
+docker run -it -d --restart=always -p 80-88:80-88 -v  /home/$USER/PHPScripts:/var/www/html --name nginx --network dev --network-alias nginx nginx:alpine
 # 两个容器需要映射相同的目录, 保证nginx转向php容器的资源一致
 # 端口映射需要注意一点, 在win环境下, 好像不可以使用-表示连续端口映射
 # 使用专属网络, 就可以不使用--link, 挂载专用解释器容器, 就和使用连接访问php解释器一致, 应该和--link相似
