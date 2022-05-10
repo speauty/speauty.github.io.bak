@@ -3,7 +3,7 @@
 ### 环境构建
 ?> [点击打开下载页面](https://golang.google.cn/dl/)，这里按OS区分
 #### Windows系统
-直接下载相应安装，双击安装即可。我这里使用的是[go1.17.9.windows-amd64.msi](https://golang.google.cn/dl/go1.18.1.windows-amd64.msi)，
+直接下载相应安装，双击安装即可。我这里使用的是[go1.18.1.windows-amd64.msi](https://golang.google.cn/dl/go1.18.1.windows-amd64.msi)，
 由于之前装有，这里就不单独安装。需要注意的是，我主机安装的版本是 `go1.16.2`。其实也没什么需要注意的，相对比较简单。
 
 可在终端输入 `go version` 查看当前版本。当然，有可能提示错误
@@ -13,6 +13,23 @@ Check the spelling of the name, or if a path was included, verify that the path 
 
 这表示 `go.exe` 没有在环境变量(这里指的是Path)中，需要在 `Win => 设置 => 系统 => 关于 => 高级系统设置 => 环境变量 => 系统变量(Path) => 新增`，
 填入 `go.exe` 所在的bin目录
+#### Linux系统
+以 `Ubuntu-22.04` 系统为例，这里采用[go1.18.1.linux-amd64.tar.gz](https://golang.google.cn/dl/go1.18.1.linux-amd64.tar.gz)
+1. 下载对应压缩文件 `wget https://golang.google.cn/dl/go1.18.1.linux-amd64.tar.gz`
+2. 解压到指定安装目录 `tar -wzxf go1.18.1.linux-amd64.tar.gz -O /usr/local`
+3. 配置环境变量，然后通过指令 `source /etc/profile` 重载配置即可。不过我当时好像是重启之后才生效的。
+   ```shell
+   sudo vim /etc/profile
+   # 在文件末尾增加下列配置
+   export GOPATH=$HOME/go
+   export GOROOT=/usr/local/go
+   export GOOS=linux
+   export GOTOOLS=$GOROOT/pkg/tool/
+   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+   ```
+4. 校验环境，在终端输入指令 `go version`，即可输出当前版本。
+
+实际上，在 `Linux` 环境，各方面实现相对比较全面，建议采用 `Linux` 环境开发。若在 `Windows` 上，推荐使用 `WSL` 或 `Docker` 相关环境。
 
 ### go env 全解
 待补充。。。
