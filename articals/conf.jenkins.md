@@ -13,4 +13,4 @@
     
     This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
     ```
-4. 默认推荐配置安装即可
+4. 默认推荐配置安装即可，不过由于网络原因，会导致大部分插件下载失败。这里需要改个配置，在 `系统管理 => 插件管理 => 高级 => 升级站点` 中，输入 `http://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json` 即可，重新选择相应插件更新重启即可。
