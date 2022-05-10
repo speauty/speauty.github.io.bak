@@ -13,3 +13,4 @@
 * 一只菜鸟
    * [开发杂记](/articals/storm.dev.md)
    * [SSL证书配置](/articals/conf.ssl.md)
+   * [Jenkins配置](/articals/conf.jenkins.md)
