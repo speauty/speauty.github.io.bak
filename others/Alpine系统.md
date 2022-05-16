@@ -90,7 +90,7 @@ mkdir /etc/supervisor.d
       * 启动 `supervisord -c /etc/supervisord.conf`
       * 重启 `supervisorctl restart`
       * 查看 `supervisorctl status`
-      * 更新 `supervisorctl upload`
+      * 更新 `supervisorctl update`
       * 重启子程序 `supervisorctl reload`
    * 实践
       * 配置文件守护进程
