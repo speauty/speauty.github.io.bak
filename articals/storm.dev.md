@@ -1,6 +1,6 @@
 # 开发杂记 {docsify-ignore}
 
-1. 在Jetbrains IDE中设置php脚本文件头部描述
+#### 在Jetbrains IDE中设置php脚本文件头部描述
    * 快捷键 `Ctrl+Alt+s` 打开设置(也可通过菜单`File => Settings`打开), 搜索 `File and Code Templates`;
    * 点击 `Inlude` 选中 `PHP File Header` 设置, 下面有各种变量注释, 我这里分享一个个人常用配置, 保存应用即可:
    ```
@@ -14,8 +14,8 @@
      // 开启严格模式
      declare(strict_types=1);
    ```
-   
-2. 在Ubuntu安装redis
+
+#### 在Ubuntu安装redis
 ```shell script
 # 下载redis安装包
 wget https://download.redis.io/releases/redis-6.0.9.tar.gz
@@ -47,7 +47,7 @@ sudo ./install_server.sh
 sudo systemctl enable redis_6379
 ```
 
-3. 在Ubuntu安装node
+#### 在Ubuntu安装node
 ```shell script
 wget https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz
 xz -d node-v14.15.4-linux-x64.tar.xz
@@ -59,7 +59,7 @@ npm config set registry https://registry.npm.taobao.org
 echo export PATH="/usr/local/node/bin:$PATH" >> /etc/profile
 ```
 
-4. 在Ubuntu安装nginx
+#### 在Ubuntu安装nginx
 ```shell script
 sudo useradd -l -M -U -s /sbin/nologin nginx
 sudo apt-get install openssl libssl-dev libpcre3-devel zlib1g-dev
@@ -87,7 +87,7 @@ PrivateTmp=true
 WantedBy=multi-user.target
 ```
 
-5. 安装带freetype的php-gd
+#### 安装带freetype的php-gd
 ```shell script
 # 下载freetype, 因为通过apt install libfreetype6-dev行不通, 就只好单独安装了
 sudo wget https://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz
@@ -100,3 +100,6 @@ cd freetype-2.9
 make && make install
 # 在php.ini添加一条记录 extension=gd, 重启php-fpm即可
 ```
+
+#### 关于Alpine容器无法启动二进制文件
+主要由于Alpine镜像使用的是`musl libc`，而不是`gun libc`，从而导致动态链接库位置错误。可通过`ldd`查看链接。解决方法是将动态链接库添到指定位置：`mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2`
