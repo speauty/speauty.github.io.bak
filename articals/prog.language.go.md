@@ -16,7 +16,7 @@ Check the spelling of the name, or if a path was included, verify that the path 
 #### Linux系统
 以 `Ubuntu-22.04` 系统为例，这里采用[go1.18.1.linux-amd64.tar.gz](https://golang.google.cn/dl/go1.18.1.linux-amd64.tar.gz)
 1. 下载对应压缩文件 `wget https://golang.google.cn/dl/go1.18.1.linux-amd64.tar.gz`
-2. 解压到指定安装目录 `tar -wzxf go1.18.1.linux-amd64.tar.gz -O /usr/local`
+2. 解压到指定安装目录 `tar -wzxf go1.18.1.linux-amd64.tar.gz -C /usr/local`
 3. 配置环境变量，然后通过指令 `source /etc/profile` 重载配置即可。不过我当时好像是重启之后才生效的。
    ```shell
    sudo vim /etc/profile
