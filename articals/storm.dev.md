@@ -103,3 +103,6 @@ make && make install
 
 #### 关于Alpine容器无法启动二进制文件
 主要由于Alpine镜像使用的是`musl libc`，而不是`gun libc`，从而导致动态链接库位置错误。可通过`ldd`查看链接。解决方法是将动态链接库添到指定位置：`mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2`
+
+#### PgSql自增序列重置
+主要就是将当前最大值设置为自增序列起点，`SELECT setval('xxoo_seq', (select max(id) from tableName));`
