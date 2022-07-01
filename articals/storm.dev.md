@@ -106,3 +106,6 @@ make && make install
 
 #### PgSql自增序列重置
 主要就是将当前最大值设置为自增序列起点，`SELECT setval('xxoo_seq', (select max(id) from tableName));`
+
+#### Github主机被污染
+着实有些摸不着头脑，怎么就被污染了呢？甚至查看了hosts文件，也没看到相关内容。估计在更底层的地方，然后就在hosts中新增了github.com记录，就可以了。其中IP记录可访问https://ipaddress.com/website/github.com获取。 
