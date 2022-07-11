@@ -12,5 +12,6 @@
          * [数据类型-ZipList](/articals/Redis/Redis数据类型-ZipList解析.md)
 * 一只菜鸟
    * [开发杂记](/articals/storm.dev.md)
+   * [运维新手](/articals/storm.devops.md)
    * [SSL证书配置](/articals/conf.ssl.md)
    * [Jenkins配置](/articals/conf.jenkins.md)

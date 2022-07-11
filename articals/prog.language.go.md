@@ -31,15 +31,6 @@ Check the spelling of the name, or if a path was included, verify that the path 
 
 实际上，在 `Linux` 环境，各方面实现相对比较全面，建议采用 `Linux` 环境开发。若在 `Windows` 上，推荐使用 `WSL` 或 `Docker` 相关环境。
 
-### go env 全解
-待补充。。。
-
-### go tool 全解
-待补充。。。
-
-### go command 全解
-待补充。。。
-
 ### gRPC服务
 
 #### 配置环境
@@ -160,3 +151,6 @@ Check the spelling of the name, or if a path was included, verify that the path 
 
 #### 相关站点
   * 暂无
+
+### 附录
+  * [在Windows上管理go项目脚本](/resources/win.go.pro.manage.bat ':ignore')
