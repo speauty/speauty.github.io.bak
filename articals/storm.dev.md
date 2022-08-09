@@ -49,11 +49,8 @@ sudo systemctl enable redis_6379
 
 #### 在Ubuntu安装node
 ```shell script
-wget https://nodejs.org/dist/v14.15.4/node-v14.15.4-linux-x64.tar.xz
-xz -d node-v14.15.4-linux-x64.tar.xz
-tar -xf node-v14.15.4-linux-x64.tar
-sudo mv node-v14.15.4-linux-x64 /usr/local/node
-cd /usr/local/node
+wget https://nodejs.org/dist/v18.7.0/node-v18.7.0-linux-x64.tar.gz
+tar -zxf node-v18.7.0-linux-x64.tar.gz -C /usr/local
 # 换淘宝源
 npm config set registry https://registry.npm.taobao.org
 echo export PATH="/usr/local/node/bin:$PATH" >> /etc/profile
