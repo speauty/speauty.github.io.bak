@@ -149,15 +149,15 @@ Check the spelling of the name, or if a path was included, verify that the path 
   * [gRPC-go 入门（1）：Hello World](https://blog.csdn.net/inet_ygssoftware/article/details/117608527)
   * [golang Grpc 中出现 it has a non-exported method and is defined in a different package](https://www.jianshu.com/p/d2c8fdd24b0f)
 
-#### 相关站点
-  * 暂无
-
 ### 其他问题
 #### fyne-cross设置网络代理
 比较烦，如果没有梯子的话，直接打包的话，就会网络失败，这时候想到可能要设置代理，由于我这里采用的是镜像打包，直接设置环境参数即可，比如 `-env=GOPROXY="https://goproxy.cn"`
 
 #### gorm零值更新
 如果不特殊处理，在gorm中，零值是直接被忽略。如果需要更新零值的字段，可以通过 `Select` 指定更新字段，或者更新数据采用 `map[string]interface{}`，文档中有相关说明。
+
+### 相关站点
+* 暂无
 
 ### 附录
   * [在Windows上管理go项目脚本](/resources/win.go.pro.manage.bat ':ignore')

@@ -106,3 +106,9 @@ make && make install
 
 #### Github主机被污染
 着实有些摸不着头脑，怎么就被污染了呢？甚至查看了hosts文件，也没看到相关内容。估计在更底层的地方，然后就在hosts中新增了github.com记录，就可以了。其中IP记录可访问https://ipaddress.com/website/github.com获取。 
+
+#### UPX压缩二进制文件
+[UPX](https://github.com/upx/upx)，这是个压缩工具，主要是Go打包出来的二进制文件相对较大，所以就想着优化一下，于是就找到了这个工具，执行起来也比较方便，`upx -9 exe`；
+
+#### 关于一条指令的参考
+kill -9 $(ps aux|grep ${targetFile}|grep -v grep| tr -s ' '| cut -d ' ' -f 2)
