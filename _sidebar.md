@@ -11,6 +11,7 @@
       * [数据类型-Dict](/articals/Redis/Redis数据类型-DICT解析.md)
       * [数据类型-IntSet](/articals/Redis/Redis数据类型-IntSet解析.md)
       * [数据类型-ZipList](/articals/Redis/Redis数据类型-ZipList解析.md)
+      * [数据类型-ZipMap](/articals/Redis/Redis数据类型-ZipMap解析.md)
 * 服务治理
   * [MQ: 消息队列](/articals/srv.mq.md)
 * 一只菜鸟
