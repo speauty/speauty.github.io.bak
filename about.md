@@ -1,7 +1,8 @@
-#### Document
+# 关于
+## 关于站点
 Notes for technology.
 
-#### Author
+## 关于作者
 Speauty, a phper started at 2017, engaged in website development, 
 only familiar with very few technologies, 
 and busied with tossing and turning restlessly, 

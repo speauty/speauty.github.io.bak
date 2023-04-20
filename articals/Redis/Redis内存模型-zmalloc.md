@@ -1,4 +1,4 @@
-## Redis源码之内存模型解析-ZMalloc {docsify-ignore}
+# Redis源码之内存模型解析-ZMalloc {docsify-ignore}
 
 当前分析Redis版本为6.2，需要注意。
 

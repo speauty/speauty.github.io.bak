@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>阅微</title>
+  <title>者也</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="keywords" content="speauty,阅微,阅微-speauty">
-  <meta name="description" content="speauty,阅微,阅微-speauty">
+  <meta name="keywords" content="speauty,者也,阅微笔记-speauty">
+  <meta name="description" content="speauty,者也,阅微笔记-speauty">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="./assets/vue.css">
   <link rel="stylesheet" href="./assets/boot.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-toc@1.0.0/dist/toc.css">
 </head>
 <body>
   <div id="app">
@@ -17,59 +18,67 @@
   </div>
   <script>
     window.$docsify = {
-      name: '阅微-speauty',
-      repo: 'https://github.com/speauty/speauty.github.io/',
+      // logo: 'favicon.ico',
+      name: '者也',
+      nameLink: '/',
+      repo: 'https://github.com/speauty',
       loadSidebar: true,
-      subMaxLevel: 5,
+      subMaxLevel: 1,
       notFoundPage: '404.md',
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
       },
       loadNavbar: true,
       mergeNavbar: true,
-      coverpage: true,
+      coverpage: false,
       onlyCover: false,
       auto2top: true,
       /* {docsify-updated} */
       formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}:{ss}',
-      // logo: '/favicon.ico',
+      themeColor: '#efc4ce',
 	  search: {
           maxAge: 86400000,
           depth: 5,
 		  paths: 'auto',
-		  placeholder: 'Search',
-		  noData: 'Nothing to find'
+		  placeholder: '我要搜索',
+		  noData: '暂无数据'
 	  },
       copyCode: {
-        buttonText : 'Copy to clipboard',
-        errorText  : 'Error',
-        successText: 'Copied'
+        buttonText : '复制',
+        errorText  : '错误',
+        successText: '成功'
       },
       pagination: {
-        previousText: 'Prev',
-        nextText: 'Next',
+        previousText: '上一页',
+        nextText: '下一页',
         crossChapter: true,
         crossChapterText: true,
+      },
+      toc: {
+        scope: '.markdown-section',
+        headings: 'h1, h2, h3, h4, h5, h6',
+        title: '导航',
       },
       plugins: [
         function(hook) {
           var footer = [
             '<hr/>',
-            '<footer>',
+            '<footer style="text-align:center;">',
             '<span><a href="https://github.com/speauty">speauty</a> &copy;2020.</span>',
-            '<span>Powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a></span>',
-            '<div style="font-size:10px">友情链接: <span>待入驻</span>  <span>待入驻</span></div>',
+            '<span>powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a></span>',
+            // '<div style="font-size:10px">友情链接: <span>待入驻</span>  <span>待入驻</span></div>',
             '</footer>'
           ].join('');
 
           hook.afterEach(function(html) {
             return html + footer;
           });
-        }
-        ]
+        },
+      ],
     }
   </script>
   <script src="./assets/docsify.min.js"></script>
+  
   <script src="./assets/prism/prism-bash.min.js"></script>
   <script src="./assets/prism/prism-php.min.js"></script>
   <script src="./assets/prism/prism-php-extras.min.js"></script>
@@ -84,10 +93,24 @@
   <script src="./assets/plugins/zoom-image.js"></script>
   <!-- 字数统计 -->
   <script src="./assets/plugins/countable.js"></script>
+  <!-- 文章内部导航 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-toc@1.0.0/dist/toc.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
   <script>
     if (typeof navigator.serviceWorker !== 'undefined') {
       navigator.serviceWorker.register('/assets/sw.js')
     }
   </script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2e77aa142b95360d8b0936d797bcb56d";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+    
 </body>
 </html>

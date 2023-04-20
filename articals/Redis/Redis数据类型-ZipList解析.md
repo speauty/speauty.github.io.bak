@@ -1,4 +1,4 @@
-## Redis源码之数据类型解析-ZipList {docsify-ignore}
+# Redis源码之数据类型解析-ZipList {docsify-ignore}
 
 当前分析 `Redis` 版本为6.2，需要注意。
 
