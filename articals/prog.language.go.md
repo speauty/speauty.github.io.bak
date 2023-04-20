@@ -149,6 +149,16 @@ Check the spelling of the name, or if a path was included, verify that the path 
   * [gRPC-go 入门（1）：Hello World](https://blog.csdn.net/inet_ygssoftware/article/details/117608527)
   * [golang Grpc 中出现 it has a non-exported method and is defined in a different package](https://www.jianshu.com/p/d2c8fdd24b0f)
 
+### 其他操作
+
+#### 增加ico
+1. 在项目根目录添加同名rc文件(exe.rc);
+   ```
+   IDI_ICON1 ICON "exe.ico"
+   ```
+2. 在项目根目录执行 `windres -o exe.syso exe.rc`;
+3. 执行 `go build` 就可以生成带图标的exe文件
+
 ### 其他问题
 #### fyne-cross设置网络代理
 比较烦，如果没有梯子的话，直接打包的话，就会网络失败，这时候想到可能要设置代理，由于我这里采用的是镜像打包，直接设置环境参数即可，比如 `-env=GOPROXY="https://goproxy.cn"`
